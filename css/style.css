@@ -1,0 +1,19 @@
+.reel {
+  display: inline-flex;
+  flex-direction: column; }
+  .reel-item {
+    padding: 10px;
+    border: 1px solid grey; }
+
+.clr-r {
+  color: red; }
+.clr-b {
+  color: blue; }
+.clr-g {
+  color: green; }
+
+#start {
+  vertical-align: middle;
+  display: inline-block; }
+
+/*# sourceMappingURL=style.css.map */
