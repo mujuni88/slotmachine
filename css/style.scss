@@ -1,5 +1,6 @@
 $clr-pr : #f27802;
 $clr-r: red;
+$clr-black: #000;
 
 body{
   font-family: 'Open Sans', sans-serif;
@@ -15,23 +16,29 @@ body{
   display: flex;
   align-items: center;
 }
-.slm{
+
+.flex-column-center{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.flex-inline-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slm{
+  @extend .flex-column-center;
   width:100%;
   
   &-hdr{
+	@extend .flex-column-center;
 	padding:10px 10px 0 10px;
 	border:10px outset $clr-pr;
 	border-bottom:0;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction:column; 
-	background-color: #000;
+	background-color: $clr-black;
   }
   &-ic{
 	margin:0 auto;
@@ -40,39 +47,30 @@ body{
 	color: $clr-pr;
   }
   &-main{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: #000;
+	@extend .flex-column-center;
+	background-color: $clr-black;
 	border:10px outset $clr-pr;
-	//border-radius: 16px;
 	padding:10px;
 	align-content:space-between;
   }
   &-board{
 	width:60%;
 	padding:5px;
-	background-color: #000;
+	background-color: $clr-black;
 	border:5px outset $clr-pr;
-	//border-radius: 16px;
 	text-align: center;
   }
   &-top, &-bottom{
+	@extend .flex-inline-center;
 	width:100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	margin-bottom: 40px;
   } 
   &-msg{
 	font-size:1.4em;
   }
   &-reels{
+	@extend .flex-inline-center;
 	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	margin:0 20px;
 	width:80%;
   }

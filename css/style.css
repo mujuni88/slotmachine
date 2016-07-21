@@ -12,31 +12,30 @@ body {
   display: flex;
   align-items: center; }
 
-.slm {
+.flex-column-center, .slm, .slm-hdr, .slm-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; }
+
+.flex-inline-center, .slm-top, .slm-bottom, .slm-reels {
+  display: flex;
   align-items: center;
+  justify-content: center; }
+
+.slm {
   width: 100%; }
   .slm-hdr {
     padding: 10px 10px 0 10px;
     border: 10px outset #f27802;
     border-bottom: 0;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background-color: #000; }
   .slm-ic {
     margin: 0 auto; }
   .slm-title {
     color: #f27802; }
   .slm-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: #000;
     border: 10px outset #f27802;
     padding: 10px;
@@ -49,17 +48,11 @@ body {
     text-align: center; }
   .slm-top, .slm-bottom {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 40px; }
   .slm-msg {
     font-size: 1.4em; }
   .slm-reels {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 0 20px;
     width: 80%; }
   .slm-reel {
