@@ -8,12 +8,12 @@
             selector:'#reel1 .slm-reel-item'
         },
         {
-            interval:200,
+            interval:250,
             numInterval:11,
             selector:'#reel2 .slm-reel-item'
         },
         {
-            interval:200,
+            interval:300,
             numInterval:11,
             selector:'#reel3 .slm-reel-item'
         }
