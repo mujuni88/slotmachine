@@ -1,24 +1,152 @@
-.reel{
-  display:inline-flex;
-  flex-direction:column;
-  &-item{
+$clr-pr : #f27802;
+$clr-r: red;
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid $clr-r;
+}
+.row{
+  display: flex;
+  align-items: center;
+}
+.slm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  
+  &-hdr{
+	padding:10px 10px 0 10px;
+	border:10px outset $clr-pr;
+	border-bottom:0;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column; 
+	background-color: #000;
+  }
+  &-ic{
+	margin:0 auto;
+  }
+  &-title{
+	color: $clr-pr;
+  }
+  &-main{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #000;
+	border:10px outset $clr-pr;
+	//border-radius: 16px;
 	padding:10px;
-	border:1px solid grey;
+	align-content:space-between;
+  }
+  &-board{
+	width:60%;
+	padding:5px;
+	background-color: #000;
+	border:5px outset $clr-pr;
+	//border-radius: 16px;
+	text-align: center;
+  }
+  &-top, &-bottom{
+	width:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+  } 
+  &-msg{
+	font-size:1.4em;
+  }
+  &-reels{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin:0 20px;
+	width:80%;
+  }
+  &-reel{
+	display:inline-flex;
+	flex-direction:column;
+	&-item{
+	  padding:10px;
+	  border:1px solid grey;
+	  img{
+		width:50px; 
+	  }
+	}
+  }
+  &-line{
+	display: flex;
+	&-lbl{
+	  position: relative;
+	  padding:5px;
+	  background-color: $clr-r;
+	  color:#fff;
+	}
+  }
+  &-btn{
+	color:#fff;
+	background-color: $clr-r;
+	border-radius: 16px;
+	font-size: 1.4em;
+	padding:20px;
+	border:1px outset grey;
+	&:hover, &:focus{
+	  color:#fff;
+	  border-style: inset;
+	}
   }
 }
+
 .clr{
   &-r{
-	color:red;
+	color: $clr-r;
   }
   &-b{
 	color:blue;
   }
   &-g{
 	color:green;
+  } 
+  &-pr{
+	color:$clr-pr; 
   }
 }
 
-#start{
-  vertical-align:middle;
-  display:inline-block;
+.no-radius{
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
 }
+.txt-pr, .navbar-brand{
+  color: $clr-pr !important;
+}
+@keyframes blink {
+    0% { color: white; }
+  50% { color: blue; }
+  100% { color: green; }
+}
+@-webkit-keyframes blink {
+    0% { color: white; }
+  50% { color: blue; }
+  100% { color: green; }
+}
+.blink {
+  -webkit-animation: blink 1s linear infinite;
+  -moz-animation: blink 1s linear infinite;
+  animation: blink 1s linear infinite;
+} 
+
+}  

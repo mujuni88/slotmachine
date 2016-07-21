@@ -1,7 +1,12 @@
 (function () {
 
-    var app = new SlotMachine();
-
+    var app = new SlotMachine(),
+        start = document.getElementById('start');
+    
+    start.addEventListener('click', function(){
+        app.onLeverClick();
+    });
+    
     function Reel(items, interval, numInterval, selector) {
         this.items = items;
         this.interval = interval || 800;
@@ -12,14 +17,15 @@
     Reel.prototype.animate = function () {
         var self = this;
         return new Promise(function (resolve, reject) {
-            var numInterval = self.numInterval;
+            var rand = Math.floor(Math.random()*5);
+            var numInterval = rand + self.numInterval;
             var tId = setInterval(function () {
                 self.swap();
                 if (--numInterval === 0) {
                     clearInterval(tId);
-                    resolve(document.querySelectorAll(self.selector)[1].textContent);
+                    resolve(document.querySelectorAll(self.selector)[1].getAttribute('data'));
                 }
-            }, self.interval);
+            }, rand + self.interval);
         });
     };
     Reel.prototype.swap = function () {
@@ -87,50 +93,20 @@
         this.reelThreeItems = [this.coffeeGrounds, this.looseTea, this.espressoBeans];
         
         var selector = '.reel-item';
-        this.reelOne = new Reel(this.reelOneItems, 100, Math.floor(Math.random()*10) + 10, '#reel1 .reel-item');
-        this.reelTwo = new Reel(this.reelTwoItems, 150, Math.floor(Math.random()*10) + 10, '#reel2 .reel-item');
-        this.reelThree = new Reel(this.reelThreeItems, 200, Math.floor(Math.random()*10) + 10, '#reel3 .reel-item');
+        this.reelOne = new Reel(this.reelOneItems, 200, 11, '#reel1 .slm-reel-item');
+        this.reelTwo = new Reel(this.reelTwoItems,  250, 13, '#reel2 .slm-reel-item');
+        this.reelThree = new Reel(this.reelThreeItems,  300, 12, '#reel3 .slm-reel-item');
         this.reels = [this.reelOne, this.reelTwo, this.reelThree];
-
-        var self = this;
-        this.onLeverClick = function onLeverClick() {
-            var res = document.getElementById('result');
- 
-            res.innerHTML = '';
-            console.log('onLeverClick');
-            var p1 = self.reelOne.animate(),
-                p2 = self.reelTwo.animate(),
-                p3 = self.reelThree.animate();
-
-            console.log(p1);
-            Promise.all([p1, p2, p3]).then(function(values){
-
-                var temp = values[0];
-                for (var i = 1; i < values.length; i++) {
-                    if (values[i] !== temp) {
-                        res.innerHTML = '<span class="clr-r">Sorry!, Try again later</span>';
-                        return;
-                    }
-                }
-
-                res.innerHTML = '<span class="clr-g">You won!, Free ' + temp + ' for you!!</span>';
-            })
-            ;
-
-
-        };
-
-        var start = document.getElementById('start');
-        start.addEventListener('click', this.onLeverClick);
-        console.log(this.onLeverClick);
     }
 
     SlotMachine.prototype.onLeverClick = function () {
-        var self = this;
-        var res = document.getElementById('result');
+        var self = this,
+            res = document.getElementById('result');
+            resLbl = document.querySelector('.slm-line-lbl');
         
-        res.innerHTML = '';
+        resLbl.classList.remove('blink');
 
+        res.innerHTML = 'Spinning...';
         console.log('onLeverClick');
         var p1 = self.reelOne.animate(),
             p2 = self.reelTwo.animate(),
@@ -139,19 +115,17 @@
         console.log(p1);
         Promise.all([p1, p2, p3]).then(function(values){
 
-            var temp = values[i];
+            var temp = values[0];
             for (var i = 1; i < values.length; i++) {
                 if (values[i] !== temp) {
-                    res.innerHTML = '<span class="clr-r">Sorry!, Try again later</span>';
+                    res.innerHTML = '<span class="clr-r">Sorry, spin again</span>';
+                    return;
                 }
             }
 
-            res.innerHTML = '<span class="clr-r">You won!, Free ' + temp + ' for you!!</span>';
-        })
-        ;
-
-
+            res.innerHTML = '<span class="clr-g blink">You won free ' + temp + '</span>';
+            resLbl.classList.add('blink');
+        });
     };
-
 
 })();
