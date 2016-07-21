@@ -68,6 +68,9 @@ body {
     .slm-reel-item {
       padding: 10px;
       border: 1px solid grey; }
+      .slm-reel-item + .slm-reel-item:not(:last-child) {
+        border-top: 0;
+        border-bottom: 0; }
       .slm-reel-item img {
         width: 50px; }
   .slm-line {
@@ -78,15 +81,17 @@ body {
       background-color: red;
       color: #fff; }
   .slm-btn {
+    outline: 0;
     color: #fff;
     background-color: red;
     border-radius: 16px;
     font-size: 1.4em;
     padding: 20px;
     border: 1px outset grey; }
-    .slm-btn:hover, .slm-btn:focus {
+    .slm-btn:hover, .slm-btn:focus, .slm-btn:active {
       color: #fff;
-      border-style: inset; }
+      border-style: inset;
+      outline: 0; }
 
 .clr-r {
   color: red; }
@@ -109,36 +114,19 @@ body {
   0% {
     color: white; }
   50% {
+    color: blue; }
+  100% {
     color: green; } }
 @-webkit-keyframes blink {
   0% {
     color: white; }
   50% {
+    color: blue; }
+  100% {
     color: green; } }
 .blink {
   -webkit-animation: blink 1s linear infinite;
   -moz-animation: blink 1s linear infinite;
   animation: blink 1s linear infinite; }
-
-@keyframes blink-btn {
-  0% {
-    color: white; }
-  50% {
-    color: green; }
-  100% {
-    color: blue; } }
-@-webkit-keyframes blink-btn {
-  0% {
-    color: white; }
-  50% {
-    color: green; }
-  100% {
-    color: blue; } }
-.blink-btn {
-  -webkit-animation: blink 1s linear infinite;
-  -moz-animation: blink 1s linear infinite;
-  animation: blink 1s linear infinite; }
-  .blink-btn:hover {
-    animation: 0; }
 
 /*# sourceMappingURL=style.css.map */
